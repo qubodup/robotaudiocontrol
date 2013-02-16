@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head></head>
+<style type="text/css">
+body, html {
+  margin: 0;
+  padding: 0;
+  font-variant: small-caps;
+}
+#wrap {
+  margin: 0 auto;
+  width: 600px;
+}
+#p1 {
+  width: 300px;
+  float: left
+}
+#p2 {
+  width: 300px;
+  float: right;
+}
+h2 {
+  background-color: #ccc;
+  padding-left: 4px;
+}
+#p1 .sel {
+  background-color: #faf;
+}
+#p2 .sel {
+  background-color: #aff;
+}
+</style>
+<body id="body" onmousedown="return false;">
+<div id="wrap">
+<div id="p1">
+<h2>Robot 1 (upkey, downkey)</h2>
+<ul>
+<li id="p1s0" class="sel">Left</li>
+<li id="p1s1">Right</li>
+<li id="p1s2">Up</li>
+<li id="p1s3">West</li>
+<li id="p1s4">Down</li>
+<li id="p1s5">East</li>
+<li id="p1s6">Drop</li>
+<li id="p1s7">South</li>
+<li id="p1s8">Pick Up</li>
+<li id="p1s9">North</li>
+</ul>
+</div>
+<div id="p2">
+<h2>Robot 2 (w, s)</h2>
+<ul>
+<li id="p2s0" class="sel">Left</li>
+<li id="p2s1">Right</li>
+<li id="p2s2">Up</li>
+<li id="p2s3">West</li>
+<li id="p2s4">Down</li>
+<li id="p2s5">East</li>
+<li id="p2s6">Drop</li>
+<li id="p2s7">South</li>
+<li id="p2s8">Pick Up</li>
+<li id="p2s9">North</li>
+</ul>
+</div>
+</div>
+<script type="text/javascript" src="lib/audia-min.js"></script>
+<script type="text/javascript">
+(function (event) {
+  var p1 = 0;
+  var p2 = 0;
+  var p1s = new Array();
+  var p2s = new Array();
+  p1s[0] = new Audia("left1.wav");
+  p1s[1] = new Audia("right1.wav");
+  p1s[2] = new Audia("up1.wav");
+  p2s[0] = new Audia("left2.wav");
+  p2s[1] = new Audia("right2.wav");
+  p2s[2] = new Audia("up2.wav");
+  p1s[3] = new Audia("west1.wav");
+  p2s[3] = new Audia("west2.wav");
+  p1s[4] = new Audia("down1.wav");
+  p2s[4] = new Audia("down2.wav");
+  p1s[5] = new Audia("east1.wav");
+  p2s[5] = new Audia("east2.wav");
+  p1s[6] = new Audia("drop1.wav");
+  p2s[6] = new Audia("drop2.wav");
+  p1s[7] = new Audia("south1.wav");
+  p2s[7] = new Audia("south2.wav");
+  p1s[8] = new Audia("pickup1.wav");
+  p2s[8] = new Audia("pickup2.wav");
+  p1s[9] = new Audia("north1.wav");
+  p2s[9] = new Audia("north2.wav");
+  var bodyInput = document.getElementById("body");
+  bodyInput.addEventListener("keydown", function (event) {
+    if (event.keyCode == 40) {
+      p1next = p1 + 1;
+      if ( p1 == 9 ) { p1next = 0 };
+      p1s[p1].stop();
+      p1s[p1next].play();
+      document.getElementById("p1s"+p1).className = "";
+      document.getElementById("p1s"+p1next).className = "sel";
+      p1 = p1next;
+    };
+    if (event.keyCode == 38) {
+      p1next = p1 - 1;
+      if ( p1 == 0 ) { p1next = 9 };
+      p1s[p1].stop();
+      p1s[p1next].play();
+      document.getElementById("p1s"+p1).className = "";
+      document.getElementById("p1s"+p1next).className = "sel";
+      p1 = p1next;
+    };
+    if (event.keyCode == 83) {
+      p2next = p2 + 1;
+      if ( p2 == 9 ) { p2next = 0 };
+      p2s[p2].stop();
+      p2s[p2next].play();
+      document.getElementById("p2s"+p2).className = "";
+      document.getElementById("p2s"+p2next).className = "sel";
+      p2 = p2next;
+    };
+    if (event.keyCode == 87) {
+      p2next = p2 - 1;
+      if ( p2 == 0 ) { p2next = 9 };
+      p2s[p2].stop();
+      p2s[p2next].play();
+      document.getElementById("p2s"+p2).className = "";
+      document.getElementById("p2s"+p2next).className = "sel";
+      p2 = p2next;
+    };
+  }, false);
+}());
+</script>
+</body></html>
