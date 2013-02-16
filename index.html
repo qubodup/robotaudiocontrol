@@ -110,7 +110,7 @@ h2 {
       document.getElementById("p1s"+p1next).className = "sel";
       p1 = p1next;
     };
-    if (event.keyCode == 83) {
+    if (event.keyCode == 39) {
       p2next = p2 + 1;
       if ( p2 == 9 ) { p2next = 0 };
       p2s[p2].stop();
@@ -119,7 +119,7 @@ h2 {
       document.getElementById("p2s"+p2next).className = "sel";
       p2 = p2next;
     };
-    if (event.keyCode == 87) {
+    if (event.keyCode == 37) {
       p2next = p2 - 1;
       if ( p2 == 0 ) { p2next = 9 };
       p2s[p2].stop();
